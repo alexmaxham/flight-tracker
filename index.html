@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alex Maxham</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio of Alex Maxham, tech journalist covering Android for Android Headlines.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&family=Roboto:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+<style>
+/* Layout: one 1120px column; hero is an asymmetric two-column split (type left, morphing portrait right),
+   everything below stacks in generous tonal sections. Material 3 Expressive: big radii, tonal surfaces,
+   pill buttons, springy motion, Roboto Flex pushed wide and heavy for display type. */
+:root {
+  --font-display: 'Roboto Flex', 'Roboto', system-ui, -apple-system, sans-serif;
+  --font-body: 'Roboto Flex', 'Roboto', system-ui, -apple-system, sans-serif;
+
+  /* M3 color roles. Light scheme, seeded from a deep teal with a warm coral tertiary. */
+  --primary: #006A60;            --on-primary: #FFFFFF;
+  --primary-container: #74F8E5;  --on-primary-container: #00201C;
+  --secondary: #4A635F;          --on-secondary: #FFFFFF;
+  --secondary-container: #CCE8E2;--on-secondary-container: #05201C;
+  --tertiary: #9A4520;           --on-tertiary: #FFFFFF;
+  --tertiary-container: #FFDBCE; --on-tertiary-container: #380D00;
+  --surface: #F4FBF8;            --on-surface: #161D1C;
+  --on-surface-variant: #3F4947;
+  --outline: #6F7976;            --outline-variant: #BEC9C5;
+  --sc-lowest: #FFFFFF; --sc-low: #EFF5F3; --sc: #E9EFED; --sc-high: #E3EAE7; --sc-highest: #DDE4E1;
+  --inverse-surface: #2B3230;    --inverse-on-surface: #ECF2EF; --inverse-primary: #53DBC9;
+  --scrim: rgba(0,0,0,.32);
+  --elev-1: 0 1px 2px rgba(22,29,28,.14), 0 1px 4px rgba(22,29,28,.08);
+  --elev-3: 0 4px 8px rgba(22,29,28,.14), 0 10px 24px rgba(22,29,28,.10);
+
+  /* M3 shape scale */
+  --r-s: 12px; --r-m: 16px; --r-l: 28px; --r-xl: 36px; --r-xxl: 48px; --r-full: 999px;
+  /* M3 motion */
+  --ease-std: cubic-bezier(.2, 0, 0, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --dur-s: 180ms; --dur-m: 320ms; --dur-l: 520ms;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --primary: #53DBC9;            --on-primary: #003731;
+    --primary-container: #005048;  --on-primary-container: #74F8E5;
+    --secondary: #B1CCC6;          --on-secondary: #1C3531;
+    --secondary-container: #334B47;--on-secondary-container: #CCE8E2;
+    --tertiary: #FFB596;           --on-tertiary: #562000;
+    --tertiary-container: #7A3200; --on-tertiary-container: #FFDBCE;
+    --surface: #0E1513;            --on-surface: #DDE4E1;
+    --on-surface-variant: #BEC9C5;
+    --outline: #899390;            --outline-variant: #3F4947;
+    --sc-lowest: #090F0E; --sc-low: #161D1C; --sc: #1A2120; --sc-high: #252B2A; --sc-highest: #2F3634;
+    --inverse-surface: #DDE4E1;    --inverse-on-surface: #2B3230; --inverse-primary: #006A60;
+    --scrim: rgba(0,0,0,.5);
+    --elev-1: 0 1px 2px rgba(0,0,0,.4), 0 1px 4px rgba(0,0,0,.3);
+    --elev-3: 0 4px 8px rgba(0,0,0,.4), 0 10px 24px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --primary: #53DBC9;            --on-primary: #003731;
+  --primary-container: #005048;  --on-primary-container: #74F8E5;
+  --secondary: #B1CCC6;          --on-secondary: #1C3531;
+  --secondary-container: #334B47;--on-secondary-container: #CCE8E2;
+  --tertiary: #FFB596;           --on-tertiary: #562000;
+  --tertiary-container: #7A3200; --on-tertiary-container: #FFDBCE;
+  --surface: #0E1513;            --on-surface: #DDE4E1;
+  --on-surface-variant: #BEC9C5;
+  --outline: #899390;            --outline-variant: #3F4947;
+  --sc-lowest: #090F0E; --sc-low: #161D1C; --sc: #1A2120; --sc-high: #252B2A; --sc-highest: #2F3634;
+  --inverse-surface: #DDE4E1;    --inverse-on-surface: #2B3230; --inverse-primary: #006A60;
+  --scrim: rgba(0,0,0,.5);
+  --elev-1: 0 1px 2px rgba(0,0,0,.4), 0 1px 4px rgba(0,0,0,.3);
+  --elev-3: 0 4px 8px rgba(0,0,0,.4), 0 10px 24px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--dur-m) var(--ease-std), color var(--dur-m) var(--ease-std);
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 40; background: var(--surface);
+}
+a { color: inherit; }
+img { max-width: 100%; }
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; font-family: var(--font-display); }
+p { margin: 0; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; border-radius: var(--r-s); }
+
+.msr {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal; font-style: normal; font-size: 24px; line-height: 1;
+  letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap;
+  word-wrap: normal; direction: ltr; -webkit-font-feature-settings: 'liga'; font-feature-settings: 'liga';
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+  flex: none;
+}
+.msr.fill { font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
+
+/* ---------- Type scale (M3 Expressive) ---------- */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 7.5vw, 6.25rem);
+  line-height: .98; letter-spacing: -.035em;
+  font-variation-settings: 'wdth' 118, 'wght' 760, 'opsz' 144;
+}
+.display-xl em { font-style: normal; color: var(--primary); font-variation-settings: 'wdth' 135, 'wght' 900, 'opsz' 144; }
+.headline-l { font-size: clamp(1.75rem, 3.4vw, 2.5rem); line-height: 1.12; letter-spacing: -.02em; font-variation-settings: 'wdth' 108, 'wght' 640; }
+.headline-m { font-size: clamp(1.35rem, 2.4vw, 1.75rem); line-height: 1.2; letter-spacing: -.012em; font-variation-settings: 'wdth' 104, 'wght' 600; }
+.title-m { font-size: 1.125rem; line-height: 1.35; letter-spacing: -.005em; font-variation-settings: 'wdth' 102, 'wght' 580; }
+.body-l { font-size: 1.125rem; line-height: 1.6; color: var(--on-surface-variant); max-width: 62ch; }
+.body-m { font-size: 1rem; line-height: 1.55; color: var(--on-surface-variant); }
+.label { font-size: .8125rem; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--on-surface-variant); }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: .875rem; font-weight: 600; letter-spacing: .02em; color: var(--primary); }
+.eyebrow .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--primary); }
+
+/* ---------- Layout ---------- */
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+section { padding-block: clamp(56px, 8vw, 104px); }
+.section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 32px; margin-bottom: 36px; }
+.section-head .lede { max-width: 48ch; }
+
+/* ---------- Top app bar ---------- */
+.appbar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30;
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+}
+.appbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; }
+.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-family: var(--font-display); font-size: 1.125rem; font-variation-settings: 'wdth' 110, 'wght' 700; letter-spacing: -.01em; }
+.brand .mark {
+  width: 36px; height: 36px; display: grid; place-items: center;
+  background: var(--primary); color: var(--on-primary); font-size: .9rem;
+  border-radius: 40% 60% 55% 45% / 55% 45% 55% 45%;
+  transition: border-radius var(--dur-l) var(--ease-spring), transform var(--dur-l) var(--ease-spring);
+}
+.brand:hover .mark { border-radius: 50%; transform: rotate(-8deg); }
+.nav { display: flex; gap: 6px; padding: 6px; border-radius: var(--r-full); background: var(--sc-low); }
+.nav a { text-decoration: none; padding: 8px 16px; border-radius: var(--r-full); font-weight: 600; font-size: .9375rem; color: var(--on-surface-variant); transition: background-color var(--dur-s) var(--ease-std), color var(--dur-s) var(--ease-std); }
+.nav a:hover { background: var(--sc-highest); color: var(--on-surface); }
+@media (max-width: 760px) { .nav { display: none; } }
+
+/* Segmented theme switcher (M3 connected button group) */
+.seg { display: inline-flex; gap: 2px; padding: 0; border-radius: var(--r-full); }
+.seg button {
+  appearance: none; border: 1px solid var(--outline-variant); background: var(--sc-lowest);
+  width: 44px; height: 40px; display: grid; place-items: center; cursor: pointer; color: var(--on-surface-variant);
+  border-radius: var(--r-m);
+  transition: background-color var(--dur-s) var(--ease-std), color var(--dur-s) var(--ease-std), border-radius var(--dur-m) var(--ease-spring), transform var(--dur-m) var(--ease-spring);
+}
+.seg button:first-child { border-radius: var(--r-full) var(--r-m) var(--r-m) var(--r-full); }
+.seg button:last-child { border-radius: var(--r-m) var(--r-full) var(--r-full) var(--r-m); }
+.seg button .msr { font-size: 20px; }
+.seg button:hover { background: var(--sc-high); }
+.seg button[aria-pressed="true"] { background: var(--secondary-container); color: var(--on-secondary-container); border-color: transparent; border-radius: var(--r-full); }
+.seg button:active { transform: scale(.94); }
+
+/* ---------- Buttons (M3 Expressive sizes) ---------- */
+.btn {
+  appearance: none; border: 0; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 28px; border-radius: var(--r-full);
+  font-family: var(--font-display); font-size: 1.0625rem; font-variation-settings: 'wdth' 104, 'wght' 620;
+  transition: transform var(--dur-m) var(--ease-spring), border-radius var(--dur-m) var(--ease-spring), background-color var(--dur-s) var(--ease-std), box-shadow var(--dur-s) var(--ease-std);
+}
+.btn:hover { border-radius: var(--r-m); }
+.btn:active { transform: scale(.96); }
+.btn .msr { font-size: 22px; }
+.btn.filled { background: var(--primary); color: var(--on-primary); }
+.btn.filled:hover { box-shadow: var(--elev-1); }
+.btn.tonal { background: var(--secondary-container); color: var(--on-secondary-container); }
+.btn.tonal:hover { background: color-mix(in srgb, var(--secondary-container) 88%, var(--on-secondary-container)); }
+.btn.outlined { background: transparent; color: var(--primary); box-shadow: inset 0 0 0 1px var(--outline); }
+.btn.sm { min-height: 44px; padding: 0 20px; font-size: .9375rem; }
+.icon-btn {
+  appearance: none; border: 0; background: var(--sc-high); color: var(--on-surface-variant); cursor: pointer;
+  width: 44px; height: 44px; border-radius: var(--r-full); display: grid; place-items: center; flex: none;
+  transition: transform var(--dur-m) var(--ease-spring), border-radius var(--dur-m) var(--ease-spring), background-color var(--dur-s) var(--ease-std);
+}
+.icon-btn:hover { background: var(--primary-container); color: var(--on-primary-container); border-radius: var(--r-s); }
+.icon-btn:active { transform: scale(.9); }
+.icon-btn .msr { font-size: 20px; }
+
+/* Chips */
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px;
+  border-radius: var(--r-s); font-size: .9rem; font-weight: 600;
+  background: transparent; color: var(--on-surface-variant); box-shadow: inset 0 0 0 1px var(--outline-variant);
+  cursor: pointer; border: 0; white-space: nowrap;
+  transition: background-color var(--dur-s) var(--ease-std), color var(--dur-s) var(--ease-std), border-radius var(--dur-m) var(--ease-spring), box-shadow var(--dur-s) var(--ease-std);
+}
+.chip:hover { background: var(--sc-high); }
+.chip[aria-pressed="true"], .chip.on { background: var(--secondary-container); color: var(--on-secondary-container); box-shadow: none; border-radius: var(--r-full); }
+.chip .msr { font-size: 18px; }
+.chip.static { cursor: default; }
+.tag {
+  display: inline-flex; align-items: center; min-height: 28px; padding: 0 12px; border-radius: var(--r-full);
+  font-size: .78rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+}
+.tag.review { background: var(--primary-container); color: var(--on-primary-container); }
+.tag.news { background: var(--tertiary-container); color: var(--on-tertiary-container); }
+.tag.guide { background: var(--secondary-container); color: var(--on-secondary-container); }
+.tag.explainer { background: var(--inverse-surface); color: var(--inverse-on-surface); }
+.tag.deal { background: var(--sc-highest); color: var(--on-surface); }
+
+/* ---------- Hero ---------- */
+.hero { padding-block: clamp(32px, 6vw, 80px) clamp(48px, 7vw, 96px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: clamp(24px, 5vw, 72px); align-items: center; }
+.hero-copy { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-topics { display: flex; flex-wrap: wrap; gap: 8px; }
+.portrait-wrap { position: relative; display: grid; place-items: center; min-width: 0; }
+.portrait {
+  width: min(100%, 420px); aspect-ratio: 1; max-width: 100%;
+  background:
+    radial-gradient(120% 100% at 20% 10%, var(--primary-container) 0%, transparent 55%),
+    radial-gradient(90% 90% at 90% 90%, var(--tertiary-container) 0%, transparent 60%),
+    var(--sc-highest);
+  border-radius: 58% 42% 45% 55% / 52% 60% 40% 48%;
+  display: grid; place-items: center; position: relative; overflow: hidden;
+  transition: border-radius var(--dur-l) var(--ease-spring), transform var(--dur-l) var(--ease-spring);
+  animation: blob 14s ease-in-out infinite alternate;
+}
+.portrait:hover { animation-play-state: paused; border-radius: var(--r-xxl); transform: rotate(-3deg) scale(1.02); }
+.portrait .initials {
+  font-family: var(--font-display); font-size: clamp(5rem, 14vw, 9.5rem); line-height: 1; letter-spacing: -.06em;
+  font-variation-settings: 'wdth' 140, 'wght' 900, 'opsz' 144; color: var(--on-surface); opacity: .92;
+}
+.portrait .cap { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: .8rem; font-weight: 600; color: var(--on-surface-variant); background: color-mix(in srgb, var(--surface) 70%, transparent); padding: 6px 12px; border-radius: var(--r-full); }
+@keyframes blob {
+  0%   { border-radius: 58% 42% 45% 55% / 52% 60% 40% 48%; }
+  50%  { border-radius: 42% 58% 60% 40% / 48% 42% 58% 52%; }
+  100% { border-radius: 50% 50% 38% 62% / 60% 44% 56% 40%; }
+}
+.float-chip {
+  position: absolute; display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 16px; border-radius: var(--r-full); font-weight: 700; font-size: .9rem;
+  box-shadow: var(--elev-3);
+}
+.float-chip.a { top: 6%; left: -4%; background: var(--tertiary); color: var(--on-tertiary); transform: rotate(-6deg); }
+.float-chip.b { bottom: 12%; right: -6%; background: var(--primary); color: var(--on-primary); transform: rotate(5deg); }
+.float-chip .msr { font-size: 18px; }
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .portrait-wrap { order: -1; }
+  .portrait { width: min(100%, 300px); }
+  .float-chip.a { left: 4%; } .float-chip.b { right: 4%; }
+}
+
+/* Stat strip */
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: clamp(40px, 6vw, 72px); }
+.stat {
+  background: var(--sc-low); padding: 24px 28px; min-width: 0;
+  border-radius: var(--r-m);
+  display: flex; flex-direction: column; gap: 6px;
+  transition: border-radius var(--dur-m) var(--ease-spring), background-color var(--dur-s) var(--ease-std);
+}
+.stat:first-child { border-radius: var(--r-xl) var(--r-m) var(--r-m) var(--r-xl); }
+.stat:last-child { border-radius: var(--r-m) var(--r-xl) var(--r-xl) var(--r-m); }
+.stat:hover { background: var(--sc-high); }
+.stat .num { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); line-height: 1; letter-spacing: -.03em; font-variation-settings: 'wdth' 120, 'wght' 760; font-variant-numeric: tabular-nums; color: var(--primary); }
+.stat .what { color: var(--on-surface-variant); font-weight: 500; }
+@media (max-width: 640px) {
+  .stats { grid-template-columns: 1fr; }
+  .stat:first-child { border-radius: var(--r-xl) var(--r-xl) var(--r-m) var(--r-m); }
+  .stat:last-child { border-radius: var(--r-m) var(--r-m) var(--r-xl) var(--r-xl); }
+}
+
+/* ---------- Featured ---------- */
+.featured {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  background: var(--sc-low); border-radius: var(--r-xxl); overflow: hidden;
+  transition: box-shadow var(--dur-m) var(--ease-std), transform var(--dur-l) var(--ease-spring);
+}
+.featured:hover { box-shadow: var(--elev-3); transform: translateY(-2px); }
+.featured-art {
+  min-height: 320px; position: relative; overflow: hidden; min-width: 0;
+  background:
+    radial-gradient(70% 80% at 80% 20%, var(--primary-container) 0%, transparent 60%),
+    radial-gradient(60% 70% at 15% 85%, var(--tertiary-container) 0%, transparent 60%),
+    var(--sc-highest);
+}
+.featured-art .phone {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -46%) rotate(-8deg);
+  width: 46%; max-width: 230px; aspect-ratio: 9 / 19; border-radius: 34px;
+  background: var(--inverse-surface); box-shadow: var(--elev-3);
+  display: flex; flex-direction: column; justify-content: flex-start; padding: 14px;
+  transition: transform var(--dur-l) var(--ease-spring);
+}
+.featured:hover .featured-art .phone { transform: translate(-50%, -50%) rotate(-4deg); }
+.phone .screen { position: absolute; inset: 10px; border-radius: 26px; background: linear-gradient(160deg, var(--primary) 0%, var(--tertiary) 100%); opacity: .95; }
+.phone .cam { position: relative; z-index: 1; width: 14px; height: 14px; border-radius: 50%; background: var(--inverse-surface); margin: 2px auto 0; }
+.phone .time { position: relative; z-index: 1; font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--on-primary); font-variation-settings: 'wdth' 125, 'wght' 800; letter-spacing: -.04em; line-height: 1; padding: 22px 6px 0; }
+.featured-body { padding: clamp(28px, 4vw, 48px); display: flex; flex-direction: column; gap: 18px; justify-content: center; min-width: 0; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; color: var(--on-surface-variant); font-size: .9rem; font-weight: 500; }
+.meta .sep { width: 4px; height: 4px; border-radius: 50%; background: var(--outline); }
+@media (max-width: 860px) { .featured { grid-template-columns: 1fr; border-radius: var(--r-xl); } .featured-art { min-height: 260px; } }
+
+/* ---------- Article grid ---------- */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 960px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+.card {
+  background: var(--sc-lowest); border-radius: var(--r-l); overflow: hidden; min-width: 0;
+  display: flex; flex-direction: column;
+  box-shadow: inset 0 0 0 1px var(--outline-variant);
+  transition: transform var(--dur-l) var(--ease-spring), box-shadow var(--dur-m) var(--ease-std), border-radius var(--dur-l) var(--ease-spring);
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--elev-3); border-radius: var(--r-xl); }
+.card.hidden-card { display: none; }
+.card-art { aspect-ratio: 16 / 9; max-width: 100%; display: grid; place-items: center; position: relative; overflow: hidden; }
+.card-art .msr { font-size: 56px; color: var(--on-surface); opacity: .55; font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 48; transition: transform var(--dur-l) var(--ease-spring); }
+.card:hover .card-art .msr { transform: scale(1.12) rotate(-6deg); }
+.art-1 { background: radial-gradient(90% 90% at 10% 10%, var(--primary-container), transparent 60%), var(--sc-high); }
+.art-2 { background: radial-gradient(90% 90% at 90% 20%, var(--tertiary-container), transparent 60%), var(--sc-high); }
+.art-3 { background: radial-gradient(90% 90% at 50% 100%, var(--secondary-container), transparent 65%), var(--sc-high); }
+.card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.card-body .title-m { flex: 1; }
+.card-body a { text-decoration: none; }
+.card-body a:hover { color: var(--primary); }
+.card-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+/* ---------- Beats ---------- */
+.beats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 960px) { .beats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .beats { grid-template-columns: 1fr; } }
+.beat {
+  padding: 28px 24px; border-radius: var(--r-l); min-width: 0;
+  display: flex; flex-direction: column; gap: 14px;
+  transition: border-radius var(--dur-l) var(--ease-spring), transform var(--dur-l) var(--ease-spring);
+}
+.beat:hover { border-radius: var(--r-m) var(--r-xxl) var(--r-m) var(--r-xxl); transform: translateY(-3px); }
+.beat.p { background: var(--primary-container); color: var(--on-primary-container); }
+.beat.s { background: var(--secondary-container); color: var(--on-secondary-container); }
+.beat.t { background: var(--tertiary-container); color: var(--on-tertiary-container); }
+.beat.n { background: var(--sc-highest); color: var(--on-surface); }
+.beat .msr { font-size: 36px; }
+.beat h3 { font-size: 1.25rem; font-variation-settings: 'wdth' 106, 'wght' 650; letter-spacing: -.01em; }
+.beat p { font-size: .95rem; line-height: 1.5; opacity: .85; }
+
+/* ---------- About ---------- */
+.about { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
+.about .text { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.facts { display: flex; flex-direction: column; gap: 2px; background: var(--sc-low); border-radius: var(--r-l); overflow: hidden; }
+.fact { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; padding: 18px 20px; background: var(--sc-low); min-width: 0; }
+.fact + .fact { border-top: 1px solid var(--outline-variant); }
+.fact .ic { width: 44px; height: 44px; border-radius: var(--r-m); background: var(--sc-highest); display: grid; place-items: center; color: var(--primary); }
+.fact .k { font-size: .8rem; color: var(--on-surface-variant); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.fact .v { font-weight: 600; }
+@media (max-width: 860px) { .about { grid-template-columns: 1fr; } }
+
+/* ---------- Social ---------- */
+.social { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 700px) { .social { grid-template-columns: 1fr; } }
+.handle {
+  display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; align-items: center; gap: 16px;
+  padding: 16px 16px 16px 18px; background: var(--sc-low); border-radius: var(--r-l); min-width: 0;
+  transition: background-color var(--dur-s) var(--ease-std), border-radius var(--dur-l) var(--ease-spring), transform var(--dur-l) var(--ease-spring);
+}
+.handle:hover { background: var(--sc-high); border-radius: var(--r-m); transform: translateX(4px); }
+.handle .glyph {
+  width: 52px; height: 52px; border-radius: 40% 60% 55% 45% / 55% 45% 55% 45%; display: grid; place-items: center;
+  font-family: var(--font-display); font-size: 1.1rem; font-variation-settings: 'wdth' 120, 'wght' 800; letter-spacing: -.02em;
+  transition: border-radius var(--dur-l) var(--ease-spring);
+}
+.handle:hover .glyph { border-radius: var(--r-m); }
+.glyph.x { background: var(--inverse-surface); color: var(--inverse-on-surface); }
+.glyph.th { background: var(--sc-highest); color: var(--on-surface); }
+.glyph.bs { background: var(--primary-container); color: var(--on-primary-container); }
+.glyph.ma { background: var(--secondary-container); color: var(--on-secondary-container); }
+.glyph.ig { background: var(--tertiary-container); color: var(--on-tertiary-container); }
+.glyph.yt { background: var(--tertiary); color: var(--on-tertiary); }
+.glyph.li { background: var(--primary); color: var(--on-primary); }
+.glyph.em { background: var(--secondary); color: var(--on-secondary); }
+.handle .who { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.handle .net { font-size: .8rem; color: var(--on-surface-variant); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.handle .at { font-weight: 600; font-size: 1.05rem; overflow-wrap: anywhere; user-select: all; }
+
+/* ---------- Footer ---------- */
+footer { padding-block: 40px 120px; color: var(--on-surface-variant); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; font-size: .9rem; border-top: 1px solid var(--outline-variant); padding-top: 28px; }
+footer .wrap p { max-width: 60ch; }
+
+/* ---------- FAB ---------- */
+.fab {
+  position: fixed; z-index: 35;
+  right: calc(20px + env(safe-area-inset-right, 0px));
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  display: inline-flex; align-items: center; gap: 12px; min-height: 64px; padding: 0 24px 0 20px;
+  border: 0; cursor: pointer; border-radius: var(--r-l);
+  background: var(--primary-container); color: var(--on-primary-container);
+  font-family: var(--font-display); font-size: 1.05rem; font-variation-settings: 'wdth' 106, 'wght' 650;
+  box-shadow: var(--elev-3);
+  transition: transform var(--dur-m) var(--ease-spring), border-radius var(--dur-m) var(--ease-spring), background-color var(--dur-s) var(--ease-std);
+}
+.fab:hover { border-radius: var(--r-m); transform: translateY(-2px); }
+.fab:active { transform: scale(.95); }
+.fab .msr { font-size: 26px; }
+
+/* ---------- Snackbar ---------- */
+.snackbar {
+  position: fixed; z-index: 50; left: 50%; bottom: calc(100px + env(safe-area-inset-bottom, 0px));
+  transform: translate(-50%, 24px); opacity: 0; pointer-events: none;
+  background: var(--inverse-surface); color: var(--inverse-on-surface);
+  padding: 14px 20px; border-radius: var(--r-m); box-shadow: var(--elev-3);
+  font-size: .95rem; font-weight: 500; max-width: calc(100vw - 32px);
+  transition: transform var(--dur-m) var(--ease-std), opacity var(--dur-m) var(--ease-std);
+}
+.snackbar.show { transform: translate(-50%, 0); opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 1ms !important; animation: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="appbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Alex Maxham, home"><span class="mark" aria-hidden="true">AM</span>Alex Maxham</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#beats">Beats</a>
+      <a href="#about">About</a>
+      <a href="#social">Social</a>
+    </nav>
+    <div class="seg" role="group" aria-label="Color theme">
+      <button type="button" id="theme-light" data-theme-choice="light" aria-pressed="false" aria-label="Light theme" title="Light"><span class="msr" aria-hidden="true">light_mode</span></button>
+      <button type="button" id="theme-auto" data-theme-choice="auto" aria-pressed="true" aria-label="Match system theme" title="System"><span class="msr" aria-hidden="true">brightness_auto</span></button>
+      <button type="button" id="theme-dark" data-theme-choice="dark" aria-pressed="false" aria-label="Dark theme" title="Dark"><span class="msr" aria-hidden="true">dark_mode</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Tech journalist · Android Headlines</span>
+          <h1 class="display-xl">Phones, platforms, and the <em>people</em> who build them.</h1>
+          <p class="body-l">I cover Google, Samsung, and the wider Android ecosystem for Android Headlines: hands-on reviews, breaking news, and the occasional deep dive into why your phone does what it does.</p>
+          <div class="hero-actions">
+            <a class="btn filled" href="#work"><span class="msr" aria-hidden="true">newspaper</span>Read my work</a>
+            <a class="btn tonal" href="#social"><span class="msr" aria-hidden="true">alternate_email</span>Follow along</a>
+          </div>
+          <div class="hero-topics" aria-label="Topics I cover">
+            <span class="chip static on">Pixel</span>
+            <span class="chip static">Galaxy</span>
+            <span class="chip static">Wear OS</span>
+            <span class="chip static">Android 17</span>
+            <span class="chip static">Foldables</span>
+          </div>
+        </div>
+        <div class="portrait-wrap">
+          <div class="portrait" aria-label="Portrait placeholder">
+            <span class="initials" aria-hidden="true">AM</span>
+            <span class="cap">Portrait goes here</span>
+          </div>
+          <span class="float-chip a"><span class="msr" aria-hidden="true">rate_review</span>Reviews</span>
+          <span class="float-chip b"><span class="msr" aria-hidden="true">bolt</span>Breaking news</span>
+        </div>
+      </div>
+
+      <div class="stats" aria-label="By the numbers">
+        <div class="stat"><span class="num">2,400+</span><span class="what">Articles published</span></div>
+        <div class="stat"><span class="num">300+</span><span class="what">Devices reviewed</span></div>
+        <div class="stat"><span class="num">10 yrs</span><span class="what">On the Android beat</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="label">Featured</span>
+          <h2 class="headline-l">The one I'd hand you first</h2>
+        </div>
+        <p class="body-m lede">A long-form review, with the testing notes that usually get cut for length.</p>
+      </div>
+
+      <article class="featured">
+        <div class="featured-art" aria-hidden="true">
+          <div class="phone"><div class="screen"></div><div class="cam"></div><div class="time">10:08</div></div>
+        </div>
+        <div class="featured-body">
+          <span class="tag review">Review</span>
+          <h3 class="headline-m"><a href="#" data-placeholder style="text-decoration:none">Pixel 10 Pro review: Google finally made the camera predictable</a></h3>
+          <p class="body-m">Two weeks, three cities, and roughly 1,900 photos later, the story isn't the new sensor. It's that every shot looks like the last one. That consistency is the real upgrade.</p>
+          <div class="meta"><span>Oct 28, 2026</span><span class="sep" aria-hidden="true"></span><span>14 min read</span><span class="sep" aria-hidden="true"></span><span>Android Headlines</span></div>
+          <div><a class="btn tonal sm" href="#" data-placeholder>Read on Android Headlines<span class="msr" aria-hidden="true">open_in_new</span></a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="latest" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="label">Latest</span>
+          <h2 class="headline-l">Recent bylines</h2>
+        </div>
+      </div>
+      <div class="filters" role="group" aria-label="Filter articles by type">
+        <button type="button" class="chip" data-filter="all" aria-pressed="true"><span class="msr" aria-hidden="true">apps</span>All</button>
+        <button type="button" class="chip" data-filter="review" aria-pressed="false"><span class="msr" aria-hidden="true">rate_review</span>Reviews</button>
+        <button type="button" class="chip" data-filter="news" aria-pressed="false"><span class="msr" aria-hidden="true">bolt</span>News</button>
+        <button type="button" class="chip" data-filter="guide" aria-pressed="false"><span class="msr" aria-hidden="true">checklist</span>Buying guides</button>
+        <button type="button" class="chip" data-filter="explainer" aria-pressed="false"><span class="msr" aria-hidden="true">lightbulb</span>Explainers</button>
+        <button type="button" class="chip" data-filter="deal" aria-pressed="false"><span class="msr" aria-hidden="true">sell</span>Deals</button>
+      </div>
+
+      <div class="grid" id="article-grid">
+        <article class="card" data-type="news">
+          <div class="card-art art-2" aria-hidden="true"><span class="msr">widgets</span></div>
+          <div class="card-body">
+            <span class="tag news">News</span>
+            <h3 class="title-m"><a href="#" data-placeholder>One UI 8.5 beta brings back the lock screen widgets everyone asked for</a></h3>
+            <div class="card-foot"><span class="meta"><span>Nov 5</span><span class="sep" aria-hidden="true"></span><span>4 min</span></span><button type="button" class="icon-btn" data-placeholder aria-label="Open article"><span class="msr" aria-hidden="true">arrow_outward</span></button></div>
+          </div>
+        </article>
+        <article class="card" data-type="review">
+          <div class="card-art art-1" aria-hidden="true"><span class="msr">watch</span></div>
+          <div class="card-body">
+            <span class="tag review">Review</span>
+            <h3 class="title-m"><a href="#" data-placeholder>Galaxy Watch 8 Classic review: the bezel is back, and so is the battery</a></h3>
+            <div class="card-foot"><span class="meta"><span>Nov 2</span><span class="sep" aria-hidden="true"></span><span>11 min</span></span><button type="button" class="icon-btn" data-placeholder aria-label="Open article"><span class="msr" aria-hidden="true">arrow_outward</span></button></div>
+          </div>
+        </article>
+        <article class="card" data-type="explainer">
+          <div class="card-art art-3" aria-hidden="true"><span class="msr">notifications_paused</span></div>
+          <div class="card-body">
+            <span class="tag explainer">Explainer</span>
+            <h3 class="title-m"><a href="#" data-placeholder>Android 17's notification cooldown, explained in plain English</a></h3>
+            <div class="card-foot"><span class="meta"><span>Oct 30</span><span class="sep" aria-hidden="true"></span><span>6 min</span></span><button type="button" class="icon-btn" data-placeholder aria-label="Open article"><span class="msr" aria-hidden="true">arrow_outward</span></button></div>
+          </div>
+        </article>
+        <article class="card" data-type="guide">
+          <div class="card-art art-1" aria-hidden="true"><span class="msr">smartphone</span></div>
+          <div class="card-body">
+            <span class="tag guide">Buying guide</span>
+            <h3 class="title-m"><a href="#" data-placeholder>The best Android phones you can buy right now, ranked by who you are</a></h3>
+            <div class="card-foot"><span class="meta"><span>Oct 24</span><span class="sep" aria-hidden="true"></span><span>18 min</span></span><button type="button" class="icon-btn" data-placeholder aria-label="Open article"><span class="msr" aria-hidden="true">arrow_outward</span></button></div>
+          </div>
+        </article>
+        <article class="card" data-type="review">
+          <div class="card-art art-2" aria-hidden="true"><span class="msr">speed</span></div>
+          <div class="card-body">
+            <span class="tag review">Hands-on</span>
+            <h3 class="title-m"><a href="#" data-placeholder>OnePlus 15 hands-on: absurdly fast, with one compromise I can't ignore</a></h3>
+            <div class="card-foot"><span class="meta"><span>Oct 19</span><span class="sep" aria-hidden="true"></span><span>8 min</span></span><button type="button" class="icon-btn" data-placeholder aria-label="Open article"><span class="msr" aria-hidden="true">arrow_outward</span></button></div>
+          </div>
+        </article>
+        <article class="card" data-type="deal">
+          <div class="card-art art-3" aria-hidden="true"><span class="msr">sell</span></div>
+          <div class="card-body">
+            <span class="tag deal">Deal</span>
+            <h3 class="title-m"><a href="#" data-placeholder>Pixel Buds Pro 3 hit their lowest price yet ahead of Black Friday</a></h3>
+            <div class="card-foot"><span class="meta"><span>Oct 17</span><span class="sep" aria-hidden="true"></span><span>2 min</span></span><button type="button" class="icon-btn" data-placeholder aria-label="Open article"><span class="msr" aria-hidden="true">arrow_outward</span></button></div>
+          </div>
+        </article>
+      </div>
+      <p class="body-m" id="empty-note" hidden style="margin-top:16px">Nothing in this category yet.</p>
+    </div>
+  </section>
+
+  <section id="beats" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="label">Beats</span>
+          <h2 class="headline-l">What I cover</h2>
+        </div>
+        <p class="body-m lede">Four lanes, one ecosystem. If it runs Android or talks to something that does, it's fair game.</p>
+      </div>
+      <div class="beats">
+        <div class="beat p"><span class="msr" aria-hidden="true">rate_review</span><h3>Reviews</h3><p>Phones, watches, earbuds, and tablets, tested for weeks rather than days.</p></div>
+        <div class="beat t"><span class="msr" aria-hidden="true">bolt</span><h3>Breaking news</h3><p>Launches, leaks, and platform updates from Google, Samsung, and friends.</p></div>
+        <div class="beat s"><span class="msr" aria-hidden="true">lightbulb</span><h3>Explainers</h3><p>What a new Android feature does, why it exists, and whether you should care.</p></div>
+        <div class="beat n"><span class="msr" aria-hidden="true">checklist</span><h3>Buying guides</h3><p>Honest recommendations and the deals that are actually worth your money.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="about">
+        <div class="text">
+          <span class="label">About</span>
+          <h2 class="headline-l">Ten years of asking "but why does it do that?"</h2>
+          <p class="body-l">I've been writing about Android since the days when "flagship" meant a removable battery. At Android Headlines I review the devices people actually buy, chase down the news that matters, and try to explain the platform in a way that doesn't require a computer science degree.</p>
+          <p class="body-l">When I'm not testing a phone, I'm usually testing another phone. Or a watch. Or a pair of earbuds I'll lose within the month.</p>
+          <div class="hero-actions">
+            <a class="btn outlined" href="#" data-placeholder><span class="msr" aria-hidden="true">download</span>Press kit</a>
+            <a class="btn outlined" href="#" data-placeholder><span class="msr" aria-hidden="true">mic</span>Podcast appearances</a>
+          </div>
+        </div>
+        <div class="facts" aria-label="Quick facts">
+          <div class="fact"><span class="ic"><span class="msr" aria-hidden="true">badge</span></span><div><div class="k">Outlet</div><div class="v">Android Headlines</div></div></div>
+          <div class="fact"><span class="ic"><span class="msr" aria-hidden="true">location_on</span></span><div><div class="k">Based in</div><div class="v">Your city, USA</div></div></div>
+          <div class="fact"><span class="ic"><span class="msr" aria-hidden="true">event</span></span><div><div class="k">Covered on the ground</div><div class="v">Google I/O, Galaxy Unpacked, MWC, CES</div></div></div>
+          <div class="fact"><span class="ic"><span class="msr" aria-hidden="true">phone_android</span></span><div><div class="k">Daily driver</div><div class="v">Whatever arrived this week</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="social" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="label">Social</span>
+          <h2 class="headline-l">Find me</h2>
+        </div>
+        <p class="body-m lede">Tap a handle to copy it. I'm most active on X and Threads, but I read everything.</p>
+      </div>
+      <div class="social">
+        <div class="handle"><span class="glyph x" aria-hidden="true">X</span><div class="who"><span class="net">X / Twitter</span><span class="at">@alexmaxham</span></div><button type="button" class="icon-btn" data-copy="@alexmaxham" aria-label="Copy X handle"><span class="msr" aria-hidden="true">content_copy</span></button></div>
+        <div class="handle"><span class="glyph th" aria-hidden="true">@</span><div class="who"><span class="net">Threads</span><span class="at">@alexmaxham</span></div><button type="button" class="icon-btn" data-copy="@alexmaxham" aria-label="Copy Threads handle"><span class="msr" aria-hidden="true">content_copy</span></button></div>
+        <div class="handle"><span class="glyph bs" aria-hidden="true">bs</span><div class="who"><span class="net">Bluesky</span><span class="at">@alexmaxham.bsky.social</span></div><button type="button" class="icon-btn" data-copy="@alexmaxham.bsky.social" aria-label="Copy Bluesky handle"><span class="msr" aria-hidden="true">content_copy</span></button></div>
+        <div class="handle"><span class="glyph ma" aria-hidden="true">m</span><div class="who"><span class="net">Mastodon</span><span class="at">@alexmaxham@androiddev.social</span></div><button type="button" class="icon-btn" data-copy="@alexmaxham@androiddev.social" aria-label="Copy Mastodon handle"><span class="msr" aria-hidden="true">content_copy</span></button></div>
+        <div class="handle"><span class="glyph ig" aria-hidden="true">ig</span><div class="who"><span class="net">Instagram</span><span class="at">@alexmaxham</span></div><button type="button" class="icon-btn" data-copy="@alexmaxham" aria-label="Copy Instagram handle"><span class="msr" aria-hidden="true">content_copy</span></button></div>
+        <div class="handle"><span class="glyph yt" aria-hidden="true">yt</span><div class="who"><span class="net">YouTube</span><span class="at">@alexmaxham</span></div><button type="button" class="icon-btn" data-copy="@alexmaxham" aria-label="Copy YouTube handle"><span class="msr" aria-hidden="true">content_copy</span></button></div>
+        <div class="handle"><span class="glyph li" aria-hidden="true">in</span><div class="who"><span class="net">LinkedIn</span><span class="at">/in/alexmaxham</span></div><button type="button" class="icon-btn" data-copy="linkedin.com/in/alexmaxham" aria-label="Copy LinkedIn URL"><span class="msr" aria-hidden="true">content_copy</span></button></div>
+        <div class="handle"><span class="glyph em" aria-hidden="true"><span class="msr" style="font-size:22px">mail</span></span><div class="who"><span class="net">Email</span><span class="at">alex.maxham@example.com</span></div><button type="button" class="icon-btn" data-copy="alex.maxham@example.com" aria-label="Copy email address"><span class="msr" aria-hidden="true">content_copy</span></button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Alex Maxham. Mockup: article titles, figures, and handles are placeholders to be swapped for the real ones.</p>
+    <p>Designed with Material 3 Expressive.</p>
+  </div>
+</footer>
+
+<button type="button" class="fab" id="fab"><span class="msr fill" aria-hidden="true">waving_hand</span>Say hello</button>
+<div class="snackbar" id="snackbar" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var KEY = 'am-theme';
+
+  // Theme: light / auto (system) / dark. Auto removes the attribute so prefers-color-scheme decides.
+  function applyTheme(choice) {
+    if (choice === 'light' || choice === 'dark') root.setAttribute('data-theme', choice);
+    else root.removeAttribute('data-theme');
+    document.querySelectorAll('[data-theme-choice]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-theme-choice') === choice));
+    });
+  }
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  applyTheme(saved || 'auto');
+  document.querySelectorAll('[data-theme-choice]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var c = b.getAttribute('data-theme-choice');
+      applyTheme(c);
+      try { localStorage.setItem(KEY, c); } catch (e) {}
+    });
+  });
+
+  // Snackbar
+  var snack = document.getElementById('snackbar'), snackTimer;
+  function toast(msg) {
+    snack.textContent = msg;
+    snack.classList.add('show');
+    clearTimeout(snackTimer);
+    snackTimer = setTimeout(function () { snack.classList.remove('show'); }, 2600);
+  }
+
+  // Article filters
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#article-grid .card'));
+  var emptyNote = document.getElementById('empty-note');
+  document.querySelectorAll('[data-filter]').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var f = chip.getAttribute('data-filter');
+      document.querySelectorAll('[data-filter]').forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
+      var shown = 0;
+      cards.forEach(function (card) {
+        var show = f === 'all' || card.getAttribute('data-type') === f;
+        card.classList.toggle('hidden-card', !show);
+        if (show) shown++;
+      });
+      emptyNote.hidden = shown !== 0;
+    });
+  });
+
+  // Copy handles
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      var done = function () { toast('Copied ' + text); };
+      var fail = function () {
+        var at = btn.parentElement.querySelector('.at');
+        if (at) { var r = document.createRange(); r.selectNodeContents(at); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+        toast('Select and copy: ' + text);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fail);
+      else fail();
+    });
+  });
+
+  // Placeholder links (to be wired to live articles)
+  document.querySelectorAll('[data-placeholder]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      toast('Placeholder link. Point this at the live article.');
+    });
+  });
+
+  // FAB
+  document.getElementById('fab').addEventListener('click', function () {
+    var t = document.getElementById('social');
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>
